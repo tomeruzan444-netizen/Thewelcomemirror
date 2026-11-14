@@ -1,0 +1,48 @@
+import Image from "next/image";
+import Link from "next/link";
+import { CtaBand, Models } from "@/components/Sections";
+import { gallery } from "@/lib/gallery";
+
+export const metadata = {
+  title: "גלריה - מראת קבלת פנים בחתונות ובאירועים",
+  description: "תמונות מאירועים ודגמי המראות שלנו: המראה האובלית, מראת הווינטג' והמראה בעיצוב אישי, עם כיתוב אישי לחתונה ולכל אירוע.",
+  alternates: { canonical: "/gallery" },
+};
+
+export default function GalleryPage() {
+  return (
+    <>
+      <section className="page-hero">
+        <div className="wrap">
+          <nav className="crumbs" aria-label="פירורי לחם"><ol><li><Link href="/">דף הבית</Link></li><li aria-current="page">גלריה</li></ol></nav>
+          <h1>גלריה</h1>
+          <p className="lede">רגעים מול המראה, והדגמים שאפשר לבחור לאירוע שלכם.</p>
+        </div>
+      </section>
+
+      <Models />
+
+      <section className="section band-white" aria-labelledby="events-h">
+        <div className="wrap">
+          <div className="head"><h2 id="events-h">מהאירועים שלנו</h2></div>
+          {gallery.length ? (
+            <div className="gallery">
+              {gallery.map((g) => (
+                <figure key={g.src}>
+                  <Image src={g.src} alt={g.alt} width={g.width ?? 900} height={g.height ?? 1200} sizes="(max-width:760px) 50vw, 33vw" />
+                  {g.caption && <figcaption>{g.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          ) : (
+            <div className="empty-gallery">
+              <h3>התמונות מהאירועים בדרך</h3>
+              <p style={{ color: "var(--muted)", marginTop: ".6rem" }}>בינתיים אפשר לראות עוד באינסטגרם שלנו, @thewelcome.mirror.</p>
+            </div>
+          )}
+        </div>
+      </section>
+      <CtaBand />
+    </>
+  );
+}

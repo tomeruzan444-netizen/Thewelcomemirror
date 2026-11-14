@@ -64,6 +64,7 @@ export const metadata: Metadata = {
     ? ({ index: true, follow: true, "max-image-preview": "large" } as Metadata["robots"])
     : { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
   formatDetection: { telephone: false },
+  verification: { google: "SVrO4OnZS1j86gqW6I8_gIbkaCvIg8ZjyhupGxhllkE" },
 };
 
 export const viewport: Viewport = {

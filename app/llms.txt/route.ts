@@ -1,5 +1,6 @@
 import { homeFaqs, services } from "@/lib/services";
 import { topics } from "@/lib/topics";
+import { stripInline } from "@/lib/inline";
 import { absoluteUrl, site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -33,7 +34,7 @@ export function GET() {
     ...topics.map((t) => `- [${t.title}](${absoluteUrl(`/${t.slug}`)}): ${t.metaDescription}`),
     "",
     "## שאלות נפוצות",
-    ...homeFaqs.flatMap((f) => [`### ${f.q}`, f.a, ""]),
+    ...homeFaqs.flatMap((f) => [`### ${f.q}`, stripInline(f.a), ""]),
   ];
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

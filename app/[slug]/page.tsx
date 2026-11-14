@@ -11,6 +11,7 @@ import type { Service } from "@/lib/services";
 import { allPages, getPage, isTopic } from "@/lib/topics";
 import { absoluteUrl, site, whatsappLink } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
+import { renderInline } from "@/lib/inline";
 
 export const dynamicParams = false;
 
@@ -115,7 +116,7 @@ export default async function ServicePage({ params }: Params) {
             {s.sections.map((sec) => (
               <section key={sec.h2}>
                 <h2>{sec.h2}</h2>
-                {sec.body.map((p, i) => <p key={i}>{p}</p>)}
+                {sec.body.map((p, i) => <p key={i}>{renderInline(p)}</p>)}
               </section>
             ))}
           </article>

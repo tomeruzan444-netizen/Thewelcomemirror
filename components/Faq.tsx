@@ -1,4 +1,5 @@
 import type { Faq as F } from "@/lib/services";
+import { renderInline, stripInline } from "@/lib/inline";
 
 export default function Faq({ items }: { items: F[] }) {
   return (
@@ -6,7 +7,7 @@ export default function Faq({ items }: { items: F[] }) {
       {items.map((f, i) => (
         <details key={i} open={i === 0}>
           <summary>{f.q}</summary>
-          <div className="answer"><p>{f.a}</p></div>
+          <div className="answer"><p>{renderInline(f.a)}</p></div>
         </details>
       ))}
     </div>
@@ -20,7 +21,7 @@ export function faqSchema(items: F[]) {
     mainEntity: items.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: { "@type": "Answer", text: stripInline(f.a) },
     })),
   };
 }

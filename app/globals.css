@@ -313,6 +313,9 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .prose h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 2.8rem 0 1rem; }
 .prose section:first-child h2 { margin-top: 0; }
 .prose p { font-size: 1.15rem; line-height: 1.85; }
+/* קישורים פנימיים בתוך התוכן */
+.prose a, .faq .answer a { color: var(--rose-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .22em; text-decoration-color: color-mix(in srgb, var(--rose) 55%, transparent); transition: text-decoration-color .2s; }
+.prose a:hover, .faq .answer a:hover { text-decoration-color: currentColor; }
 .aside-card { position: sticky; top: 6rem; background: var(--white); border-radius: 160px 160px 24px 24px; padding: 3rem 1.8rem 1.8rem; text-align: center; border: 1px solid var(--line); }
 .aside-card h2 { font-size: 1.7rem; margin-bottom: 1rem; }
 .aside-card ul { list-style: none; padding: 0; margin: 0 0 1.4rem; text-align: right; }

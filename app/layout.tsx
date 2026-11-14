@@ -52,7 +52,9 @@ export const metadata: Metadata = {
     siteName: site.name,
   },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true, "max-image-preview": "large" } as Metadata["robots"],
+  robots: site.allowIndexing
+    ? ({ index: true, follow: true, "max-image-preview": "large" } as Metadata["robots"])
+    : { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
   formatDetection: { telephone: false },
 };
 

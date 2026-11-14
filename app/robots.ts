@@ -9,6 +9,9 @@ const AI_BOTS = [
 ];
 
 export default function robots(): MetadataRoute.Robots {
+  if (!site.allowIndexing) {
+    return { rules: [{ userAgent: "*", disallow: "/" }] };
+  }
   return {
     rules: [
       { userAgent: "*", allow: "/" },

@@ -13,9 +13,9 @@ export const site = {
    * כשהאתר מוכן לעלייה - לשנות ל-true, וזה פותח הכל.
    */
   allowIndexing: false,
-  phoneDisplay: "050-000-0000",
-  phoneIntl: "+972500000000",
-  whatsapp: "972500000000",
+  phoneDisplay: "054-452-0410",
+  phoneIntl: "+972544520410",
+  whatsapp: "972544520410",
   email: "hello@example.co.il",
   area: "פריסה ארצית - מהצפון ועד הדרום",
   hours: "א׳-ה׳ 09:00-20:00, ו׳ 09:00-13:00",

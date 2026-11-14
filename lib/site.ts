@@ -7,12 +7,12 @@ export const site = {
   nameHe: "דה וולקאם מירור",
   tagline: "Your day. Your names. Your mirror.",
   instagramUrl: "https://www.instagram.com/thewelcome.mirror",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://thewelcomemirror.vercel.app").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://thewelcomemirror.co.il").replace(/\/$/, ""),
   /**
-   * false = האתר חסום למנועי חיפוש ולמנועי AI (noindex + robots.txt חוסם).
-   * כשהאתר מוכן לעלייה - לשנות ל-true, וזה פותח הכל.
+   * true = האתר פתוח לסריקה ולאינדוקס בגוגל ובמנועי AI.
+   * false = חסימה מלאה (noindex + robots.txt חוסם + X-Robots-Tag).
    */
-  allowIndexing: false,
+  allowIndexing: true,
   phoneDisplay: "054-452-0410",
   phoneIntl: "+972544520410",
   whatsapp: "972544520410",

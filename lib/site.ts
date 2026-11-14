@@ -16,7 +16,7 @@ export const site = {
   phoneDisplay: "054-452-0410",
   phoneIntl: "+972544520410",
   whatsapp: "972544520410",
-  email: "hello@example.co.il",
+  email: "meitar.mayo@gmail.com",
   area: "פריסה ארצית - מהצפון ועד הדרום",
   hours: "א׳-ה׳ 09:00-20:00, ו׳ 09:00-13:00",
   facebook: "",

@@ -3,7 +3,6 @@ import { useEffect, useId, useRef, useState } from "react";
 import { letterings, models } from "@/lib/designs";
 import MirrorArt from "./MirrorArt";
 import { site, whatsappLink } from "@/lib/site";
-import { IconWhatsapp } from "./Icons";
 
 type Props = {
   /** "החתונה" כברירת מחדל. בעמודי שירות אחרים אפשר להעביר למשל "האירוע" */
@@ -37,6 +36,10 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
   const eventWord = fromUrl && !eventTypeProp ? (fromUrl.includes("חתונ") ? "החתונה" : "האירוע") : eventWordProp;
   const [step, setStep] = useState(0);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const [company, setCompany] = useState("");
+  const startedAt = useRef(Date.now());
   const [errors, setErrors] = useState<Errors>({});
   const [data, setData] = useState<Data>({ name: "", phone: "", location: "", date: "", design: "", lettering: "", notes: "" });
   const headRef = useRef<HTMLHeadingElement>(null);
@@ -92,9 +95,24 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
     data.notes.trim() ? `כיתוב מבוקש: ${data.notes.trim()}` : null,
   ].filter(Boolean).join("\n");
 
-  function send() {
-    window.open(whatsappLink(message), "_blank", "noopener");
-    setSent(true);
+  async function send() {
+    if (sending) return;
+    setSending(true);
+    setSendError(false);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...data, eventType: eventType ?? "", company, t: startedAt.current }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.ok) throw new Error(out.error || "failed");
+      setSent(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   const mailHref = `mailto:${site.email}?subject=${encodeURIComponent(`שאלון הזמנה - ${data.name.trim()}`)}&body=${encodeURIComponent(message)}`;
@@ -104,8 +122,8 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
       <div className="quiz" aria-live="polite">
         <div className="quiz-done">
           <span className="script">Thank you</span>
-          <h3>הפרטים מוכנים לשליחה בווטסאפ</h3>
-          <p>אם חלון הווטסאפ לא נפתח, אפשר <a href={whatsappLink(message)} target="_blank" rel="noopener">לפתוח אותו מכאן</a> או <a href={mailHref}>לשלוח במייל</a>. נחזור אליכם עם בדיקת זמינות והצעה.</p>
+          <h3>הפרטים התקבלו, תודה!</h3>
+          <p>נחזור אליכם בהקדם עם בדיקת זמינות והצעה. רוצים להקדים? <a href={whatsappLink(message)} target="_blank" rel="noopener">שלחו לנו את הפרטים גם בווטסאפ</a>.</p>
           <button type="button" className="quiz-back" onClick={() => { setSent(false); setStep(3); }}>חזרה לסיכום</button>
         </div>
       </div>
@@ -114,6 +132,9 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
 
   return (
     <form className="quiz" noValidate onSubmit={(e) => { e.preventDefault(); if (step < 3) go(step + 1); else send(); }} aria-labelledby={`${uid}-h`}>
+      <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+        <label>חברה<input type="text" name="company" tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} /></label>
+      </div>
       <div className="quiz-progress" aria-hidden="true">
         {STEPS.map((s, i) => <span key={s} data-on={i <= step} />)}
       </div>
@@ -214,7 +235,12 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
             {letteringName && <li><span>סגנון כיתוב</span><span>{letteringName}</span></li>}
             {data.notes.trim() && <li><span>כיתוב</span><span>{data.notes}</span></li>}
           </ul>
-          <p className="quiz-note">בלחיצה על השליחה ייפתח ווטסאפ עם כל הפרטים, ונחזור אליכם עם בדיקת זמינות.</p>
+          <p className="quiz-note">בלחיצה על השליחה הפרטים יגיעו אלינו, ונחזור אליכם עם בדיקת זמינות.</p>
+          {sendError && (
+            <p className="field-error" role="alert" style={{ marginTop: ".8rem" }}>
+              משהו השתבש בשליחה. אפשר לנסות שוב, או <a href={whatsappLink(message)} target="_blank" rel="noopener">לשלוח את הפרטים בווטסאפ</a> או <a href={mailHref}>במייל</a>.
+            </p>
+          )}
         </>
       )}
 
@@ -223,7 +249,7 @@ export default function Questionnaire({ eventWord: eventWordProp = "החתונה
         {step < 3 ? (
           <button type="submit" className="btn btn-rose">המשך</button>
         ) : (
-          <button type="submit" className="btn btn-rose"><IconWhatsapp />שליחה בווטסאפ</button>
+          <button type="submit" className="btn btn-rose" disabled={sending} aria-busy={sending}>{sending ? "שולחים..." : "שליחת הפרטים"}</button>
         )}
       </div>
     </form>

@@ -3,9 +3,11 @@ import { site } from "@/lib/site";
 import { letterings, models } from "@/lib/designs";
 
 /**
- * קבלת לידים מהשאלון ושליחתם במייל דרך Resend.
+ * קבלת לידים מהשאלון ושליחתם במייל.
+ * ברירת מחדל: FormSubmit (בלי הרשמה; בפעם הראשונה נשלח מייל אישור לכתובת היעד).
+ * אם מוגדר RESEND_API_KEY ב-Vercel, השליחה עוברת ל-Resend.
  * משתני סביבה (ב-Vercel, לא בקוד):
- *   RESEND_API_KEY  - חובה. מפתח API של Resend.
+ *   RESEND_API_KEY  - לא חובה. מפתח API של Resend.
  *   LEAD_TO_EMAIL   - לא חובה. ברירת מחדל: site.email
  *   LEAD_FROM_EMAIL - לא חובה. ברירת מחדל: onboarding@resend.dev
  *                     (אחרי אימות הדומיין ב-Resend: leads@thewelcomemirror.co.il)
@@ -76,8 +78,6 @@ export async function POST(req: Request) {
   if (errors.length) return NextResponse.json({ ok: false, error: "invalid", fields: errors }, { status: 400 });
 
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
-
   const lettering = letterings.find((l) => l.id === d.lettering)?.name ?? "";
   const phone = cleanPhone(d.phone);
   const waPhone = "972" + phone.slice(1);
@@ -105,13 +105,18 @@ export async function POST(req: Request) {
 </div>`;
   const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 
+  const to = process.env.LEAD_TO_EMAIL || site.email;
+  const subject = `ליד חדש: ${d.name} - ${d.eventType || "אירוע"} ${fmtDate(d.date)}`;
+
+  if (!apiKey) return sendViaFormSubmit(to, subject, rows, d.phone);
+
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       from: process.env.LEAD_FROM_EMAIL || `${site.name} <onboarding@resend.dev>`,
-      to: [process.env.LEAD_TO_EMAIL || site.email],
-      subject: `ליד חדש: ${d.name} - ${d.eventType || "אירוע"} ${fmtDate(d.date)}`,
+      to: [to],
+      subject,
       html,
       text,
     }),
@@ -123,4 +128,46 @@ export async function POST(req: Request) {
   }
   const out = (await res.json().catch(() => ({}))) as { id?: string };
   return NextResponse.json({ ok: true, id: out.id });
+}
+
+/** הכתובת שמוצגת ל-FormSubmit כמקור הטופס. קבועה, כדי שהאישור לא יתבטל כשהדומיין משתנה. */
+const FORM_PAGE = "https://thewelcomemirror.co.il/questionnaire";
+
+async function sendViaFormSubmit(to: string, subject: string, rows: [string, string][], phone: string) {
+  const fields: Record<string, string> = {};
+  for (const [k, v] of rows) fields[k] = v;
+  let res: Response;
+  try {
+    res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Origin: "https://thewelcomemirror.co.il",
+        Referer: FORM_PAGE,
+        "User-Agent": "Mozilla/5.0 (compatible; TheWelcomeMirrorSite/1.0)",
+      },
+      body: JSON.stringify({
+        ...fields,
+        "ווטסאפ ללקוח": `https://wa.me/972${cleanPhone(phone).slice(1)}`,
+        _subject: subject,
+        _template: "table",
+        _captcha: "false",
+      }),
+      signal: AbortSignal.timeout(15000),
+    });
+  } catch (e) {
+    console.error("FormSubmit network error", e);
+    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+  }
+  const raw = await res.text().catch(() => "");
+  let out: { success?: string | boolean; message?: string } = {};
+  try { out = JSON.parse(raw); } catch { /* not json */ }
+  const success = out.success === true || out.success === "true";
+  if (!res.ok || !success) {
+    console.error("FormSubmit error", res.status, raw.slice(0, 500));
+    const pending = /activat/i.test(out.message ?? "");
+    return NextResponse.json({ ok: false, error: pending ? "pending_activation" : "send_failed", detail: (out.message ?? "").slice(0, 200) }, { status: 502 });
+  }
+  return NextResponse.json({ ok: true, via: "formsubmit" });
 }

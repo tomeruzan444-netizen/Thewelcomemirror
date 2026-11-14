@@ -7,7 +7,7 @@ export const site = {
   nameHe: "דה וולקאם מירור",
   tagline: "Your day. Your names. Your mirror.",
   instagramUrl: "https://www.instagram.com/thewelcome.mirror",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://the-welcome-mirror.vercel.app").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://thewelcomemirror.vercel.app").replace(/\/$/, ""),
   phoneDisplay: "050-000-0000",
   phoneIntl: "+972500000000",
   whatsapp: "972500000000",

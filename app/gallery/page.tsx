@@ -1,7 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
-import { CtaBand, Models } from "@/components/Sections";
+import { CtaBand } from "@/components/Sections";
 import { gallery } from "@/lib/gallery";
 
 export const metadata = pageMeta({
@@ -21,16 +21,14 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <Models />
-
-      <section className="section band-white" aria-labelledby="events-h">
+      <section className="section" aria-labelledby="events-h">
         <div className="wrap">
-          <div className="head"><h2 id="events-h">מהאירועים שלנו</h2></div>
+          <div className="head center"><span className="kicker">gallery</span><h2 id="events-h">המראות שלנו באירועים</h2><p>שלושה דגמים, כל אחד עם הכיתוב של בעלי השמחה. <Link href="/design-your-mirror">עצבו את המראה שלכם</Link>.</p></div>
           {gallery.length ? (
             <div className="gallery">
-              {gallery.map((g) => (
+              {gallery.map((g, i) => (
                 <figure key={g.src}>
-                  <Image src={g.src} alt={g.alt} width={g.width ?? 900} height={g.height ?? 1200} sizes="(max-width:760px) 50vw, 33vw" />
+                  <Image src={g.src} alt={g.alt} width={g.width ?? 900} height={g.height ?? 1200} sizes="(max-width:760px) 50vw, 33vw" priority={i === 0} />
                   {g.caption && <figcaption>{g.caption}</figcaption>}
                 </figure>
               ))}

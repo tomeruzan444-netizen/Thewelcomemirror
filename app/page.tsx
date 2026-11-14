@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MirrorArt from "@/components/MirrorArt";
+import Image from "next/image";
 import Faq, { faqSchema } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import { CtaBand, Flourish, Models, QuizSection, Rental, ServiceList, Steps } from "@/components/Sections";
@@ -36,8 +36,20 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="hero-art">
-            <MirrorArt l1="Meitar" l2="Tomer" date="09.10.2026" foot="WELCOME TO OUR WEDDING" model="oval" />
+          <div className="hero-art hero-photo-wrap">
+            <figure className="hero-photo">
+              <Image
+                src="/mirrors/oval.jpg"
+                alt="מראה ממותגת לקבלת פנים: מראה אובלית לבנה עם השמות Meitar and Tomer, התאריך 09.10.2026 וברכת Welcome to our wedding בכניסה לחתונה"
+                fill
+                priority
+                sizes="(max-width:900px) 80vw, 40vw"
+              />
+            </figure>
+            <figure className="hero-photo-mini" aria-hidden="true">
+              <Image src="/mirrors/floral.jpg" alt="" fill sizes="180px" />
+            </figure>
+            <span className="hero-photo-note">Welcome to our wedding</span>
           </div>
         </div>
       </section>

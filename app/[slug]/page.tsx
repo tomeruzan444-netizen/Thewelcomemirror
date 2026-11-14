@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import MirrorArt from "@/components/MirrorArt";
@@ -84,9 +85,26 @@ export default async function ServicePage({ params }: Params) {
                   : <a href={whatsappLink(`היי, אשמח לשמוע על ${s.title}`)} className="btn btn-line" target="_blank" rel="noopener"><IconWhatsapp />ווטסאפ</a>}
               </div>
             </div>
-            <div className="hero-art">
-              <MirrorArt {...s.mirror} />
-            </div>
+            {isWedding ? (
+              <div className="hero-art hero-photo-wrap">
+                <figure className="hero-photo">
+                  <Image
+                    src="/mirrors/vintage.jpg"
+                    alt={`${s.title}: מראת וינטג' עם כיתוב זהב Tal & Itay ו-Welcome to our wedding בכניסה לחתונה`}
+                    fill
+                    priority
+                    sizes="(max-width:900px) 80vw, 40vw"
+                  />
+                </figure>
+                <figure className="hero-photo-mini" aria-hidden="true">
+                  <Image src="/mirrors/oval.jpg" alt="" fill sizes="180px" />
+                </figure>
+              </div>
+            ) : (
+              <div className="hero-art">
+                <MirrorArt {...s.mirror} />
+              </div>
+            )}
           </div>
         </div>
       </section>

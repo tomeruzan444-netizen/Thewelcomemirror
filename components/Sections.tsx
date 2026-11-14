@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { models } from "@/lib/designs";
 import { site, whatsappLink } from "@/lib/site";
-import MirrorArt from "./MirrorArt";
 import Questionnaire from "./Questionnaire";
 import { IconInstagram, IconMail, IconPhone, IconWhatsapp } from "./Icons";
 
@@ -45,21 +45,17 @@ export function Models() {
           <p>שלושה סגנונות של מראות בגובה אדם, עם כיתוב שמעוצב במיוחד בשבילכם.</p>
         </div>
         <div className="models">
-          <div className="model-card">
-            <MirrorArt l1="Meitar" l2="Tomer" date="09.10.2026" foot="WELCOME TO OUR WEDDING" model="oval" animate={false} />
-            <h3>{models[0].name}</h3>
-            <p>{models[0].text}</p>
-          </div>
-          <div className="model-card">
-            <MirrorArt l1="Welcome" date="Noa & Itay" foot="12.06.2027" model="vintage" animate={false} />
-            <h3>{models[1].name}</h3>
-            <p>{models[1].text}</p>
-          </div>
-          <div className="model-card">
-            <MirrorArt l1="Shir" l2="Omer" date="20.05.2027" foot="WELCOME" model="floral" animate={false} />
-            <h3>{models[2].name}</h3>
-            <p>{models[2].text}</p>
-          </div>
+          {models.filter((m) => m.image).map((m) => (
+            <figure className="model-card has-photo" key={m.id}>
+              <div className="model-photo">
+                <Image src={m.image!} alt={m.alt ?? m.name} fill sizes="(max-width:860px) 90vw, 30vw" />
+              </div>
+              <figcaption>
+                <h3>{m.name}</h3>
+                <p>{m.text}</p>
+              </figcaption>
+            </figure>
+          ))}
         </div>
         <p className="models-cta">רוצים לראות איך זה ייראה עם השמות שלכם? <Link href="/design-your-mirror">לעיצוב אישי של המראה</Link></p>
       </div>

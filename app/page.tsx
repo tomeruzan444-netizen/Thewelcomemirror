@@ -21,7 +21,7 @@ export default function Home() {
         <div className="wrap hero-grid">
           <div>
             <span className="hero-tag">{site.tagline}</span>
-            <h1>The Welcome Mirror - מראה ממותגת לקבלת פנים, עם השמות שלכם</h1>
+            <h1 className="h1-script"><span className="h1-latin" lang="en">The Welcome Mirror</span><span className="h1-sep"> - </span><span className="h1-he">מראה ממותגת לקבלת פנים, עם השמות שלכם</span></h1>
             <Flourish />
             <p className="lede">
               מראה ממותגת לקבלת פנים היא מראה לבנה ומעוצבת שמקבלת את האורחים בכניסה, עם השמות שלכם, התאריך וברכת Welcome. כל אורח עוצר להצטלם מולה, וכל תמונה כוללת את השמות שלכם. בהשכרה לאירוע, כולל הבאה, הצבה ואיסוף.

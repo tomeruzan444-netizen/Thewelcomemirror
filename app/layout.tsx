@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Assistant, Bellefair, Frank_Ruhl_Libre, Great_Vibes } from "next/font/google";
+import { Assistant, Bellefair, Frank_Ruhl_Libre, Great_Vibes, Gveret_Levin } from "next/font/google";
 import "./globals.css";
 import { site, absoluteUrl } from "@/lib/site";
 import Header from "@/components/Header";
@@ -33,6 +33,14 @@ const script = Great_Vibes({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-script",
+  display: "swap",
+});
+
+/** כתב יד עברי - לכותרת הראשית בדף הבית (Great Vibes לאותיות הלטיניות) */
+const hand = Gveret_Levin({
+  subsets: ["hebrew", "latin"],
+  weight: "400",
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -107,7 +115,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="he" dir="rtl" className={`${display.variable} ${title.variable} ${body.variable} ${script.variable}`}>
+    <html lang="he" dir="rtl" className={`${display.variable} ${title.variable} ${body.variable} ${script.variable} ${hand.variable}`}>
       <body>
         <a className="skip" href="#main">דילוג לתוכן הראשי</a>
         <Header events={services.map(({ slug, title, accent }) => ({ slug, title, accent }))} />

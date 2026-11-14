@@ -461,3 +461,33 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   .model-card.has-photo, .model-photo img { transition: none; }
 }
+
+/* Instagram in header */
+.header-actions { display: flex; align-items: center; gap: .7rem; flex: none; }
+.header-ig {
+  display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  color: var(--rose-dark); border: 1px solid var(--line); background: var(--white);
+  transition: color .25s ease, border-color .25s ease, transform .25s ease;
+}
+.header-ig svg { width: 21px; height: 21px; }
+.header-ig:hover { color: var(--rose); border-color: var(--rose); transform: translateY(-1px); }
+.mobile-ig { display: inline-flex; align-items: center; gap: .5rem; }
+.mobile-ig svg { width: 20px; height: 20px; }
+@media (max-width: 1100px) {
+  .header-row { gap: .6rem; }
+  .header-actions { margin-inline-start: auto; }
+  .header-ig { width: 2.4rem; height: 2.4rem; }
+}
+
+/* Homepage H1 in handwritten script */
+.hero h1.h1-script { font-weight: 400; letter-spacing: 0; color: var(--ink); }
+.h1-script .h1-latin {
+  display: block; direction: ltr; text-align: right; unicode-bidi: isolate;
+  font-family: var(--font-script), "Great Vibes", cursive; color: var(--rose);
+  font-size: clamp(3rem, 6.4vw, 5.2rem); line-height: 1.1; margin-bottom: .15em;
+}
+.h1-script .h1-sep { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.h1-script .h1-he {
+  display: block; font-family: var(--font-hand), var(--f-title);
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.25; word-spacing: .14em;
+}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
-import { IconChevron, IconClose, IconMenu, LogoMark } from "./Icons";
+import { IconChevron, IconClose, IconInstagram, IconMenu, LogoMark } from "./Icons";
 
 export function Logo() {
   return (
@@ -61,7 +61,12 @@ export default function Header({ events }: { events: NavEvent[] }) {
           <Link href="/faq" aria-current={cur("/faq")}>שאלות נפוצות</Link>
           <Link href="/contact" aria-current={cur("/contact")}>צור קשר</Link>
         </nav>
-        <Link href="/questionnaire" className="btn btn-rose header-cta">לשאלון ההזמנה</Link>
+        <div className="header-actions">
+          <a href={site.instagramUrl} className="header-ig" target="_blank" rel="noopener" aria-label="The Welcome Mirror באינסטגרם (נפתח בחלון חדש)" title="@thewelcome.mirror">
+            <IconInstagram />
+          </a>
+          <Link href="/questionnaire" className="btn btn-rose header-cta">לשאלון ההזמנה</Link>
+        </div>
         <button className="burger" type="button" aria-expanded={mobile} aria-controls="mobile-menu" aria-label={mobile ? "סגירת תפריט" : "פתיחת תפריט"} onClick={() => setMobile((v) => !v)}>
           {mobile ? <IconClose /> : <IconMenu />}
         </button>
@@ -77,6 +82,7 @@ export default function Header({ events }: { events: NavEvent[] }) {
         <Link href="/gallery">גלריה</Link>
         <Link href="/faq">שאלות נפוצות</Link>
         <Link href="/contact">צור קשר</Link>
+        <a href={site.instagramUrl} target="_blank" rel="noopener" className="mobile-ig"><IconInstagram /> <bdi dir="ltr">@thewelcome.mirror</bdi></a>
         <Link href="/questionnaire" className="btn btn-rose">לשאלון ההזמנה</Link>
       </div>
     </header>

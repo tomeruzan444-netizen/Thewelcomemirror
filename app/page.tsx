@@ -8,9 +8,9 @@ import { site } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: `מראת קבלת פנים לחתונה ולאירועים עם השמות שלכם | ${site.name}`,
+  title: `מראה ממותגת לקבלת פנים לחתונה ולאירועים | ${site.name}`,
   absoluteTitle: true,
-  description: "מראת קבלת פנים לחתונה ולאירועים: מראה לבנה מעוצבת עם השמות שלכם, התאריך וברכת Welcome. להשכרה, כולל הבאה, הצבה, איסוף ועיצוב כיתוב אישי.",
+  description: "מראה ממותגת לקבלת פנים מבית The Welcome Mirror: מראה לבנה מעוצבת עם השמות שלכם, התאריך וברכת Welcome. להשכרה לחתונות ולאירועים, כולל הבאה, הצבה ואיסוף.",
   path: "/",
 });
 
@@ -21,10 +21,10 @@ export default function Home() {
         <div className="wrap hero-grid">
           <div>
             <span className="hero-tag">{site.tagline}</span>
-            <h1>מראת קבלת פנים לחתונה, עם השמות שלכם</h1>
+            <h1>The Welcome Mirror - מראה ממותגת לקבלת פנים, עם השמות שלכם</h1>
             <Flourish />
             <p className="lede">
-              מראה לבנה ומעוצבת שמקבלת את האורחים בכניסה, עם השמות שלכם, התאריך וברכת Welcome. כל אורח עוצר להצטלם מולה, וכל תמונה כוללת את השמות שלכם. בהשכרה לאירוע, כולל הבאה, הצבה ואיסוף.
+              מראה ממותגת לקבלת פנים היא מראה לבנה ומעוצבת שמקבלת את האורחים בכניסה, עם השמות שלכם, התאריך וברכת Welcome. כל אורח עוצר להצטלם מולה, וכל תמונה כוללת את השמות שלכם. בהשכרה לאירוע, כולל הבאה, הצבה ואיסוף.
             </p>
             <div className="hero-actions">
               <Link href="/questionnaire" className="btn btn-rose">לשאלון ההזמנה</Link>

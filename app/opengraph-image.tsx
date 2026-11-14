@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "The Welcome Mirror - מראת קבלת פנים לחתונות ולאירועים";
+export const alt = "The Welcome Mirror - מראה ממותגת לקבלת פנים לחתונות ולאירועים";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

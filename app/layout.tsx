@@ -39,11 +39,11 @@ const script = Great_Vibes({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `מראת קבלת פנים לחתונה ולאירועים עם השמות שלכם | ${site.name}`,
+    default: `מראה ממותגת לקבלת פנים לחתונה ולאירועים | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description:
-    "מראת קבלת פנים לחתונה ולאירועים: מראה לבנה מעוצבת עם השמות שלכם, התאריך וברכת Welcome. להשכרה, כולל הבאה, הצבה, איסוף ועיצוב כיתוב אישי.",
+    "מראה ממותגת לקבלת פנים מבית The Welcome Mirror: מראה לבנה מעוצבת עם השמות שלכם, התאריך וברכת Welcome. להשכרה לחתונות ולאירועים, כולל הבאה, הצבה ואיסוף.",
   applicationName: site.name,
   alternates: { canonical: "/" },
   openGraph: {

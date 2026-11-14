@@ -1,1 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#2a1b2e"/><path d="M17 54V27a15 15 0 0 1 30 0v27z" fill="none" stroke="#b9c0c8" stroke-width="2.6"/><path d="M22 51V28a10 10 0 0 1 20 0v23z" fill="#b9c0c8" opacity=".3"/><g fill="#ffe2a0"><circle cx="17" cy="36" r="2.4"/><circle cx="17" cy="45" r="2.4"/><circle cx="19" cy="22" r="2.4"/><circle cx="32" cy="12" r="2.4"/><circle cx="45" cy="22" r="2.4"/><circle cx="47" cy="36" r="2.4"/><circle cx="47" cy="45" r="2.4"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>The Welcome Mirror</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c27a88"/>
+      <stop offset="1" stop-color="#8e4b59"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3dfb8"/>
+      <stop offset=".5" stop-color="#d6b27c"/>
+      <stop offset="1" stop-color="#b48c55"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2=".35" y2="1">
+      <stop offset="0" stop-color="#bfd3cc"/>
+      <stop offset=".55" stop-color="#dfe4dc"/>
+      <stop offset="1" stop-color="#f3d4d9"/>
+    </linearGradient>
+    <clipPath id="clip"><ellipse cx="32" cy="29" rx="12.6" ry="17.6"/></clipPath>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <ellipse cx="32" cy="59" rx="16" ry="2" fill="#5e2f3a" opacity=".3"/>
+
+  <!-- stand -->
+  <path d="M23.5 47 L19 59 M40.5 47 L45 59" stroke="url(#gold)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- frame -->
+  <ellipse cx="32" cy="29" rx="17.4" ry="22.6" fill="#fffaf6" stroke="url(#gold)" stroke-width="2.6"/>
+  <circle cx="32" cy="5.2" r="2.6" fill="url(#gold)"/>
+
+  <!-- glass with sheen -->
+  <ellipse cx="32" cy="29" rx="12.6" ry="17.6" fill="url(#glass)"/>
+  <g clip-path="url(#clip)">
+    <rect x="21.5" y="2" width="6" height="54" fill="#fff" opacity=".75" transform="rotate(28 32 29)"/>
+    <rect x="29.6" y="2" width="2.2" height="54" fill="#fff" opacity=".5" transform="rotate(28 32 29)"/>
+  </g>
+  <ellipse cx="32" cy="29" rx="12.6" ry="17.6" fill="none" stroke="#e5cfae" stroke-width=".9"/>
+
+  <!-- sparkle -->
+  <path d="M53 7 Q53.6 10.9 57.5 11.5 Q53.6 12.1 53 16 Q52.4 12.1 48.5 11.5 Q52.4 10.9 53 7 Z" fill="#fff4dc"/>
+</svg>

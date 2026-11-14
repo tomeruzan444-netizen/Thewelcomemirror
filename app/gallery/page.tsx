@@ -1,13 +1,14 @@
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { CtaBand, Models } from "@/components/Sections";
 import { gallery } from "@/lib/gallery";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "גלריה - מראת קבלת פנים בחתונות ובאירועים",
   description: "תמונות מאירועים ודגמי המראות שלנו: המראה האובלית, מראת הווינטג' והמראה בעיצוב אישי, עם כיתוב אישי לחתונה ולכל אירוע.",
-  alternates: { canonical: "/gallery" },
-};
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

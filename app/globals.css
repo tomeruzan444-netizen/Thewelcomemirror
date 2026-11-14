@@ -113,6 +113,15 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .header-cta { min-height: 2.6rem; padding: .45rem 1.3rem; font-size: .98rem; }
 .burger { display: none; background: none; border: 0; padding: .4rem; cursor: pointer; color: var(--ink); }
 .burger svg { width: 28px; height: 28px; }
+.burger { flex: none; }
+.logo { min-width: 0; }
+@media (max-width: 400px) {
+  .header-row { gap: .5rem; }
+  .logo { gap: .4rem; }
+  .logo-mark { width: 18px; height: 26px; }
+  .logo-word { font-size: .9rem; letter-spacing: .08em; }
+  .hero-tag { font-size: 1.5rem; }
+}
 .mobile-panel { display: none; }
 @media (max-width: 960px) {
   .nav, .header-cta { display: none; }

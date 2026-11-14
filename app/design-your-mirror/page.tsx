@@ -1,12 +1,13 @@
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import MirrorDesigner from "@/components/MirrorDesigner";
 import { CtaBand, Flourish } from "@/components/Sections";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "עצבו את מראת קבלת הפנים שלכם - הדמיה אונליין",
   description: "כתבו את הברכה, השמות, התאריך והשורה התחתונה, ותראו מיד הדמיה של מראת קבלת הפנים שלכם. בוחרים סגנון כתב וצבע, ושולחים לנו את העיצוב להשכרה לאירוע.",
-  alternates: { canonical: "/design-your-mirror" },
-};
+  path: "/design-your-mirror",
+});
 
 export default function DesignPage() {
   return (

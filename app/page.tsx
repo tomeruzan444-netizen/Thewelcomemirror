@@ -5,11 +5,14 @@ import JsonLd from "@/components/JsonLd";
 import { CtaBand, Flourish, Models, QuizSection, Rental, ServiceList, Steps } from "@/components/Sections";
 import { homeFaqs, services } from "@/lib/services";
 import { site } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = {
-  title: { absolute: `מראת קבלת פנים לחתונה ולאירועים עם השמות שלכם | ${site.name}` },
-  alternates: { canonical: "/" },
-};
+export const metadata = pageMeta({
+  title: `מראת קבלת פנים לחתונה ולאירועים עם השמות שלכם | ${site.name}`,
+  absoluteTitle: true,
+  description: "מראת קבלת פנים לחתונה ולאירועים: מראה לבנה מעוצבת עם השמות שלכם, התאריך וברכת Welcome. להשכרה, כולל הבאה, הצבה, איסוף ועיצוב כיתוב אישי.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -40,17 +43,17 @@ export default function Home() {
       </section>
 
       <Steps />
-      <div id="models"><Models /></div>
+      <Models />
       <Rental />
       <ServiceList />
       <QuizSection />
 
-      <section className="section" id="faq" aria-labelledby="faq-h">
+      <section className="section" aria-labelledby="faq-h">
         <div className="wrap faq-layout">
           <div className="head" style={{ marginBottom: 0 }}>
             <span className="kicker">questions</span>
             <h2 id="faq-h">שאלות שחוזרות אלינו</h2>
-            <p>לא מצאתם תשובה? כתבו לנו בווטסאפ או באינסטגרם.</p>
+            <p>לא מצאתם תשובה? כתבו לנו בווטסאפ או באינסטגרם, או <Link href="/faq">לכל השאלות הנפוצות</Link>.</p>
           </div>
           <Faq items={homeFaqs} />
         </div>

@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = { title: "הצהרת נגישות", alternates: { canonical: "/accessibility" }, robots: { index: true, follow: true } };
+export const metadata = pageMeta({ title: "הצהרת נגישות", description: `הצהרת הנגישות של ${site.name}: התאמות הנגישות באתר, תקן WCAG 2.1 ברמה AA ודרכי פנייה בנושא נגישות.`, path: "/accessibility" });
 
 export default function A11y() {
   return (

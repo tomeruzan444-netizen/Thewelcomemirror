@@ -9,6 +9,7 @@ import { IconWhatsapp } from "@/components/Icons";
 import type { Service } from "@/lib/services";
 import { allPages, getPage, isTopic } from "@/lib/topics";
 import { absoluteUrl, site, whatsappLink } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -22,12 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const s = getPage(slug);
   if (!s) return {};
-  return {
-    title: s.metaTitle,
-    description: s.metaDescription,
-    alternates: { canonical: `/${s.slug}` },
-    openGraph: { title: s.metaTitle, description: s.metaDescription, url: `/${s.slug}`, type: "article", images: ["/opengraph-image"] },
-  };
+  return pageMeta({ title: s.metaTitle, description: s.metaDescription, path: `/${s.slug}`, type: "article" });
 }
 
 export default async function ServicePage({ params }: Params) {
@@ -39,6 +35,7 @@ export default async function ServicePage({ params }: Params) {
   const accentStyle = { ["--accent" as string]: s.accent, ["--accent2" as string]: s.accent2 } as React.CSSProperties;
   const related = s.related.map(getPage).filter(Boolean) as Service[];
   const topic = isTopic(s.slug);
+  const quizHref = `/questionnaire?event=${encodeURIComponent(s.short)}`;
 
   const schema = [
     {
@@ -81,7 +78,7 @@ export default async function ServicePage({ params }: Params) {
               <Flourish />
               <p className="lede" style={{ marginTop: "1.2rem" }}>{s.lead}</p>
               <div className="hero-actions">
-                <a href="#questionnaire" className="btn btn-rose">לשאלון ההזמנה</a>
+                <Link href={quizHref} className="btn btn-rose">לשאלון ההזמנה</Link>
                 {topic
                   ? <Link href="/design-your-mirror" className="btn btn-line">עצבו את המראה שלכם</Link>
                   : <a href={whatsappLink(`היי, אשמח לשמוע על ${s.title}`)} className="btn btn-line" target="_blank" rel="noopener"><IconWhatsapp />ווטסאפ</a>}
@@ -110,7 +107,7 @@ export default async function ServicePage({ params }: Params) {
               {s.highlights.map((h) => <li key={h.title}>{h.title}</li>)}
               {!s.highlights.some((h) => h.title.includes("השכרה")) && <li>השכרה כולל איסוף</li>}
             </ul>
-            <a href="#questionnaire" className="btn btn-rose">בדיקת זמינות</a>
+            <Link href={quizHref} className="btn btn-rose">בדיקת זמינות</Link>
             <a href={`tel:${site.phoneIntl}`} className="btn btn-line">{site.phoneDisplay}</a>
           </aside>
         </div>

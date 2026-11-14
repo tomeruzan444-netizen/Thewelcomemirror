@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { IconChevron, IconClose, IconMenu, LogoMark } from "./Icons";
 
@@ -15,7 +14,10 @@ export function Logo() {
   );
 }
 
-export default function Header() {
+export type NavEvent = { slug: string; title: string; accent: string };
+
+/** מקבל רשימה מצומצמת מהשרת, כדי שכל תוכן העמודים לא ייכנס ל-JavaScript של הדפדפן */
+export default function Header({ events }: { events: NavEvent[] }) {
   const pathname = usePathname();
   const [drop, setDrop] = useState(false);
   const [mobile, setMobile] = useState(false);
@@ -44,7 +46,7 @@ export default function Header() {
             </button>
             {drop && (
               <div className="drop-panel" id="svc-menu">
-                {services.map((s) => (
+                {events.map((s) => (
                   <Link key={s.slug} href={`/${s.slug}`} aria-current={cur(`/${s.slug}`)}>
                     <span className="drop-dot" style={{ background: s.accent }} />
                     {s.title}
@@ -56,7 +58,7 @@ export default function Header() {
           <Link href="/design-your-mirror" aria-current={cur("/design-your-mirror")}>עיצוב אישי</Link>
           <Link href="/services" aria-current={cur("/services")}>כל השירותים</Link>
           <Link href="/gallery" aria-current={cur("/gallery")}>גלריה</Link>
-          <Link href="/#faq">שאלות נפוצות</Link>
+          <Link href="/faq" aria-current={cur("/faq")}>שאלות נפוצות</Link>
           <Link href="/contact" aria-current={cur("/contact")}>צור קשר</Link>
         </nav>
         <Link href="/questionnaire" className="btn btn-rose header-cta">לשאלון ההזמנה</Link>
@@ -66,14 +68,14 @@ export default function Header() {
       </div>
       <div className="mobile-panel" id="mobile-menu" data-open={mobile}>
         <h2>סוגי אירועים</h2>
-        {services.map((s) => (
+        {events.map((s) => (
           <Link key={s.slug} href={`/${s.slug}`}>{s.title}</Link>
         ))}
         <h2>עוד באתר</h2>
         <Link href="/design-your-mirror">עצבו את המראה שלכם</Link>
         <Link href="/services">כל השירותים</Link>
         <Link href="/gallery">גלריה</Link>
-        <Link href="/#faq">שאלות נפוצות</Link>
+        <Link href="/faq">שאלות נפוצות</Link>
         <Link href="/contact">צור קשר</Link>
         <Link href="/questionnaire" className="btn btn-rose">לשאלון ההזמנה</Link>
       </div>

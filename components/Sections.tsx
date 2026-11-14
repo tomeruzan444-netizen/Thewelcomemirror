@@ -117,7 +117,7 @@ export function ServiceList({ heading = true }: { heading?: boolean }) {
 export function QuizSection({ eventWord, eventType, title, h1 = false }: { eventWord?: string; eventType?: string; title?: string; h1?: boolean }) {
   const H = h1 ? "h1" : "h2";
   return (
-    <section className="section quiz-band" id="questionnaire" aria-labelledby="quiz-h">
+    <section className="section quiz-band" aria-labelledby="quiz-h">
       <div className="wrap quiz-layout">
         <div className="quiz-aside">
           <span className="kicker">let&apos;s talk</span>

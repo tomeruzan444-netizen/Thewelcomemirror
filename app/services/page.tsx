@@ -1,3 +1,4 @@
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import { CtaBand, Models, ServiceList } from "@/components/Sections";
@@ -5,11 +6,11 @@ import { services } from "@/lib/services";
 import { topics } from "@/lib/topics";
 import { absoluteUrl } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "השכרת מראת קבלת פנים לכל סוגי האירועים",
   description: "מראת קבלת פנים מעוצבת עם כיתוב אישי לכל אירוע: חתונה, בר ובת מצווה, ברית ובריתה, גילוי מין העובר, חינה, אירוסין, ימי הולדת ואירועי חברה.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   const schema = {

@@ -1,6 +1,7 @@
 import { site } from "@/lib/site";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata = { title: "מדיניות פרטיות", alternates: { canonical: "/privacy" } };
+export const metadata = pageMeta({ title: "מדיניות פרטיות", description: `מדיניות הפרטיות של ${site.name}: איך אנחנו משתמשים בפרטים שנשלחים בשאלון ההזמנה ובתמונות מאירועים.`, path: "/privacy" });
 
 export default function Privacy() {
   return (

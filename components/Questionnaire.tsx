@@ -1,5 +1,5 @@
 "use client";
-import { useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { letterings, models } from "@/lib/designs";
 import MirrorArt from "./MirrorArt";
 import { site, whatsappLink } from "@/lib/site";
@@ -24,8 +24,17 @@ function formatDate(iso: string) {
   return `${d}.${m}.${y}`;
 }
 
-export default function Questionnaire({ eventWord = "החתונה", eventType }: Props) {
+export default function Questionnaire({ eventWord: eventWordProp = "החתונה", eventType: eventTypeProp }: Props) {
   const uid = useId();
+  // הגעה מעמוד אירוע: /questionnaire?event=<סוג האירוע>
+  const [fromUrl, setFromUrl] = useState<string | undefined>();
+  useEffect(() => {
+    if (eventTypeProp) return;
+    const ev = new URLSearchParams(window.location.search).get("event")?.trim().slice(0, 60);
+    if (ev) setFromUrl(ev);
+  }, [eventTypeProp]);
+  const eventType = eventTypeProp ?? fromUrl;
+  const eventWord = fromUrl && !eventTypeProp ? (fromUrl.includes("חתונ") ? "החתונה" : "האירוע") : eventWordProp;
   const [step, setStep] = useState(0);
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});

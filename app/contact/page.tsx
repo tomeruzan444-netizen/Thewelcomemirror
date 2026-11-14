@@ -1,12 +1,13 @@
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { QuizSection } from "@/components/Sections";
 import { site, whatsappLink } from "@/lib/site";
 
-export const metadata = {
+export const metadata = pageMeta({
   title: "צור קשר",
   description: `יצירת קשר עם ${site.name} להשכרת מראת קבלת פנים לחתונה או לאירוע. טלפון, ווטסאפ, מייל ושאלון הזמנה קצר.`,
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

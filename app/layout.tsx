@@ -17,7 +17,7 @@ const display = Bellefair({
 
 const title = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
-  weight: ["300", "400"],
+  weight: "300",
   variable: "--font-title",
   display: "swap",
 });
@@ -108,7 +108,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="he" dir="rtl" className={`${display.variable} ${title.variable} ${body.variable} ${script.variable}`}>
       <body>
         <a className="skip" href="#main">דילוג לתוכן הראשי</a>
-        <Header />
+        <Header events={services.map(({ slug, title, accent }) => ({ slug, title, accent }))} />
         <main id="main">{children}</main>
         <Footer />
         <MobileBar />

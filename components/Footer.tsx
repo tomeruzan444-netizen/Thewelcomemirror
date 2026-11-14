@@ -29,6 +29,7 @@ export default function Footer() {
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
               <li><Link href="/design-your-mirror">עיצוב אישי של המראה</Link></li>
               <li><Link href="/questionnaire">שאלון הזמנה</Link></li>
+              <li><Link href="/faq">שאלות נפוצות</Link></li>
               <li>{site.hours}</li>
             </ul>
           </div>

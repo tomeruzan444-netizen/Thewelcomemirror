@@ -70,7 +70,7 @@ export function Rental() {
         <div className="head center">
           <span className="kicker">rental</span>
           <h2 id="rb-h">השכרה לאירוע, ואנחנו דואגים לכל השאר</h2>
-          <p>המראות שלנו להשכרה בלבד. אתם בוחרים מראה וכיתוב, ואנחנו מטפלים בכל השאר.</p>
+          <p>המראות לקבלת פנים שלנו מושכרות לאירוע בלבד. אתם בוחרים מראה וכיתוב, ואנחנו מטפלים בכל השאר.</p>
         </div>
         <ul className="rental">
           <li><h3>כיתוב אישי</h3><p>מעצבים את השמות, התאריך והברכה, ושולחים הדמיה לאישור.</p></li>
@@ -91,7 +91,7 @@ export function ServiceList({ heading = true }: { heading?: boolean }) {
           <div className="head center">
             <span className="kicker">for every celebration</span>
             <h2 id="svc-h">מראת קבלת פנים לכל שמחה</h2>
-            <p>חתונה היא רק ההתחלה. כל אירוע מקבל מראה עם הכיתוב שלו.</p>
+            <p>חתונה היא רק ההתחלה. מראה לקבלת פנים מתאימה גם לבר מצווה, לברית, ליום הולדת ולאירוע חברה, עם כיתוב שנכתב לכל אירוע מחדש.</p>
           </div>
         )}
         <ul className="svc-list">

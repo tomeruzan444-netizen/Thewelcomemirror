@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Faq, { faqSchema } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
+import InstagramSection from "@/components/InstagramSection";
 import { CtaBand, Flourish, Models, QuizSection, Rental, ServiceList, Steps } from "@/components/Sections";
 import { homeFaqs, services } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -56,6 +57,7 @@ export default function Home() {
 
       <Steps />
       <Models />
+      <InstagramSection path="/" />
       <Rental />
       <ServiceList />
       <QuizSection />

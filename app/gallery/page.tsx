@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CtaBand } from "@/components/Sections";
 import { gallery } from "@/lib/gallery";
+import InstagramSection from "@/components/InstagramSection";
 
 export const metadata = pageMeta({
   title: "גלריה - מראת קבלת פנים בחתונות ובאירועים",
@@ -41,6 +42,7 @@ export default function GalleryPage() {
           )}
         </div>
       </section>
+      <InstagramSection path="/gallery" />
       <CtaBand />
     </>
   );

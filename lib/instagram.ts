@@ -68,7 +68,6 @@ export const instagramPosts: InstagramPost[] = [
     caption: "מזכרת מושלמת מהיום שלך!",
     date: "2026-10-24",
     location: "הגן בשפיים",
-    credit: "flea_studio",
   },
 ];
 

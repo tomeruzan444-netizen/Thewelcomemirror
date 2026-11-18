@@ -527,3 +527,18 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .ig-dots button.on::before { background: var(--rose); transform: scale(1.3); }
 .ig-follow { text-align: center; margin-top: 1.6rem; }
 @media (prefers-reduced-motion: reduce) { .ig-photo img { transition: none; } }
+.ig-stage { position: relative; }
+.ig-track { cursor: grab; -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y; }
+.ig-track:focus-visible { outline: 2px solid var(--rose); outline-offset: 6px; border-radius: 12px; }
+.ig-track.dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; }
+.ig-track.dragging a { pointer-events: none; }
+.ig-side { position: absolute; top: 34%; transform: translateY(-50%); z-index: 2; width: 52px; height: 52px; box-shadow: 0 6px 20px rgba(75, 55, 60, .14); }
+.ig-side-prev { inset-inline-start: -26px; }
+.ig-side-next { inset-inline-end: -26px; }
+.ig-bottom { display: none; }
+@media (max-width: 1240px) { .ig-side-prev { inset-inline-start: -8px; } .ig-side-next { inset-inline-end: -8px; } }
+@media (max-width: 760px) {
+  .ig-side { display: none; }
+  .ig-bottom { display: grid; }
+  .ig-track { cursor: auto; }
+}

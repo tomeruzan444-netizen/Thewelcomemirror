@@ -76,7 +76,7 @@ export default async function ServicePage({ params }: Params) {
           <div className="hero-grid">
             <div>
               <span className="eyebrow">{s.eyebrow}</span>
-              <h1>{s.title}</h1>
+              <h1>{s.h1 ?? s.title}</h1>
               <Flourish />
               <p className="lede" style={{ marginTop: "1.2rem" }}>{s.lead}</p>
               <div className="hero-actions">

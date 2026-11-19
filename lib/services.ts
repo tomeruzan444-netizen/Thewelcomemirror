@@ -6,6 +6,8 @@ export type Service = {
   slug: string;
   short: string;
   title: string;
+  /** כותרת H1 בעמוד, אם שונה מ-title (title משמש גם בפירורי לחם, בתפריט ובקישורים) */
+  h1?: string;
   metaTitle: string;
   metaDescription: string;
   eyebrow: string;

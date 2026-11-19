@@ -91,7 +91,7 @@ export function ServiceList({ heading = true }: { heading?: boolean }) {
           <div className="head center">
             <span className="kicker">for every celebration</span>
             <h2 id="svc-h">מראת קבלת פנים לכל שמחה</h2>
-            <p>חתונה היא רק ההתחלה. מראה לקבלת פנים מתאימה גם לבר מצווה, לברית, ליום הולדת ולאירוע חברה, עם כיתוב שנכתב לכל אירוע מחדש.</p>
+            <p>מראה לכניסה לחתונה היא רק ההתחלה. מראה לקבלת פנים מתאימה גם לבר מצווה, לברית, ליום הולדת ולאירוע חברה, עם כיתוב שנכתב לכל אירוע מחדש.</p>
           </div>
         )}
         <ul className="svc-list">

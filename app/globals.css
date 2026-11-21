@@ -651,3 +651,10 @@ p { margin: 0 0 1em; text-wrap: pretty; }
   .logo-word { font-size: 1.05rem; letter-spacing: .1em; }
 }
 @media (max-width: 1120px) and (min-width: 961px) { .nav { margin-inline-start: 1.4rem; } }
+/* printed signs: four photos */
+.printed { grid-template-columns: repeat(4, 1fr); }
+.printed li:nth-child(2) figure { transform: translateY(1.2rem) rotate(1deg); }
+.printed li:nth-child(3) figure { transform: rotate(-1deg); }
+.printed li:nth-child(4) figure { transform: translateY(1.2rem) rotate(1.6deg); }
+@media (max-width: 1000px) and (min-width: 721px) { .printed { grid-template-columns: repeat(2, 1fr); row-gap: 2.4rem; } }
+@media (max-width: 720px) { .printed { grid-template-columns: none; } .printed li figure { transform: none !important; } }

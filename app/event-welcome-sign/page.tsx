@@ -54,6 +54,11 @@ const printed = [
     alt: "שלט קבלת פנים לבן על כן עץ עם סרט לבן: איורי קו בשחור של ברבורים, כדור דיסקו, טבעת ועוגה, והכיתוב Welcome to the wedding of Zohar & Tali, 30th May 2026",
     caption: "שחור לבן עם איורי קו. הברכה קטנה, השמות בגדול, והתאריך כתוב במילים כדי שלא יהיה בלבול בין היום לחודש.",
   },
+  {
+    src: "/signs/wedding-welcome-sign-metal-frame.jpg",
+    alt: "שלט קבלת פנים לחתונה תלוי על מסגרת מתכת שחורה עם סרטי סאטן בירוק זית, על הדשא בגן: איור קו כחול של בני זוג, הכיתוב Welcome to our Wedding ומתחתיו Shani and Yonnatan",
+    caption: "שלט תלוי על מסגרת מתכת עם סרטי סאטן ירוקים, על הדשא. מסגרת עם בסיס רחב עומדת יציב גם בגן. כאן הברכה בגדול והשמות קטנים, כי האיור של בני הזוג הוא מרכז השלט.",
+  },
 ];
 
 const wordings: { event: string; lines: { t: string; cls: string }[]; note: string }[] = [
@@ -249,7 +254,7 @@ export default function EventWelcomeSignPage() {
             {printed.map((s) => (
               <li key={s.src}>
                 <figure>
-                  <Image src={s.src} alt={s.alt} width={1086} height={1448} sizes="(max-width:720px) 78vw, 30vw" />
+                  <Image src={s.src} alt={s.alt} width={1086} height={1448} sizes="(max-width:720px) 78vw, (max-width:1000px) 45vw, 24vw" />
                   <figcaption>{s.caption}</figcaption>
                 </figure>
               </li>

@@ -620,3 +620,19 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 @media (max-width: 900px) { .ws-ours { grid-template-columns: 1fr; } .ws-ours-photos { max-width: 420px; margin-inline: auto; } }
 .ws-close { padding-block: clamp(3rem, 6vw, 4.5rem); text-align: center; }
 .w-sign { max-width: 260px; margin-inline: auto; }
+.printed { list-style: none; margin: clamp(2.5rem, 5vw, 3.5rem) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2rem); }
+.printed figure { margin: 0; background: #fff; padding: .7rem .7rem 1.1rem; border-radius: 6px; box-shadow: 0 16px 40px rgba(75,55,60,.13); transition: transform .4s ease; }
+.printed li:nth-child(1) figure { transform: rotate(-1.6deg); }
+.printed li:nth-child(3) figure { transform: rotate(1.6deg); }
+.printed li:nth-child(2) figure { transform: translateY(1.2rem); }
+.printed figure:hover { transform: none; }
+.printed img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 3px; }
+.printed figcaption { font-size: .98rem; line-height: 1.6; color: var(--muted); margin-top: .8rem; text-align: center; padding-inline: .3rem; }
+@media (max-width: 720px) {
+  .printed { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 78%; overflow-x: auto; scroll-snap-type: x mandatory; padding: .6rem .3rem 1.2rem; scrollbar-width: none; }
+  .printed::-webkit-scrollbar { display: none; }
+  .printed li { scroll-snap-align: center; }
+  .printed li figure { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) { .printed figure { transition: none; } }
+@media (max-width: 720px) { .printed figure { box-shadow: 0 6px 16px rgba(75,55,60,.10); } }

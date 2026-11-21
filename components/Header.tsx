@@ -56,6 +56,7 @@ export default function Header({ events }: { events: NavEvent[] }) {
             )}
           </div>
           <Link href="/design-your-mirror" aria-current={cur("/design-your-mirror")}>עיצוב אישי</Link>
+          <Link href="/event-welcome-sign" aria-current={cur("/event-welcome-sign")}>שלט קבלת פנים</Link>
           <Link href="/services" aria-current={cur("/services")}>כל השירותים</Link>
           <Link href="/gallery" aria-current={cur("/gallery")}>גלריה</Link>
           <Link href="/faq" aria-current={cur("/faq")}>שאלות נפוצות</Link>
@@ -78,6 +79,7 @@ export default function Header({ events }: { events: NavEvent[] }) {
         ))}
         <h2>עוד באתר</h2>
         <Link href="/design-your-mirror">עצבו את המראה שלכם</Link>
+        <Link href="/event-welcome-sign">שלט קבלת פנים לאירועים</Link>
         <Link href="/services">כל השירותים</Link>
         <Link href="/gallery">גלריה</Link>
         <Link href="/faq">שאלות נפוצות</Link>

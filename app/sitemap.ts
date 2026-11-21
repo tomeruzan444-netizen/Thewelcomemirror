@@ -9,8 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   // תמונות לסייטמאפ (Google Images): התמונות שמופיעות בעמוד הבית ובגלריה
   const photos = [...new Set([...gallery.map((g) => g.src), ...instagramPosts.map((p) => p.image)])].map((src) => absoluteUrl(src));
-  const withImages = new Set(["/", "/gallery"]);
-  const main = ["/", "/design-your-mirror", "/services", "/questionnaire", "/gallery", "/faq", "/contact", "/accessibility", "/privacy"].map((p, i) => ({
+  const withImages = new Set(["/", "/gallery", "/event-welcome-sign"]);
+  const main = ["/", "/design-your-mirror", "/services", "/questionnaire", "/gallery", "/event-welcome-sign", "/faq", "/contact", "/accessibility", "/privacy"].map((p, i) => ({
     url: absoluteUrl(p), lastModified: now, changeFrequency: "monthly" as const, priority: i === 0 ? 1 : 0.7,
     ...(withImages.has(p) ? { images: photos } : {}),
   }));

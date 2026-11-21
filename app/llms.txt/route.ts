@@ -32,6 +32,7 @@ export function GET() {
     "",
     "## מראות להשכרה",
     ...topics.map((t) => `- [${t.title}](${absoluteUrl(`/${t.slug}`)}): ${t.metaDescription}`),
+    `- [שלט קבלת פנים לאירועים](${absoluteUrl("/event-welcome-sign")}): מדריך לניסוח, עיצוב והצבה של שלט קבלת פנים, עם השוואת חומרים, נוסחים לפי סוג אירוע וטעויות נפוצות.`,
     "",
     "## שאלות נפוצות",
     ...homeFaqs.flatMap((f) => [`### ${f.q}`, stripInline(f.a), ""]),

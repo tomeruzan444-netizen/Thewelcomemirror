@@ -18,7 +18,7 @@ export default function Footer() {
           </div>
           <div>
             <h2>מראות להשכרה</h2>
-            <ul>{topics.map((t) => <li key={t.slug}><Link href={`/${t.slug}`}>{t.title}</Link></li>)}</ul>
+            <ul>{topics.map((t) => <li key={t.slug}><Link href={`/${t.slug}`}>{t.title}</Link></li>)}<li><Link href="/event-welcome-sign">שלט קבלת פנים לאירועים</Link></li></ul>
           </div>
           <div>
             <h2>יצירת קשר</h2>

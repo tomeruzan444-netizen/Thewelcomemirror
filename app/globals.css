@@ -636,3 +636,5 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 }
 @media (prefers-reduced-motion: reduce) { .printed figure { transition: none; } }
 @media (max-width: 720px) { .printed figure { box-shadow: 0 6px 16px rgba(75,55,60,.10); } }
+.ws-photo img { object-position: 50% 38%; }
+.ws-photo-mini img { object-position: 50% 35%; }

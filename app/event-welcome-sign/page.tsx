@@ -146,7 +146,7 @@ export default function EventWelcomeSignPage() {
       inLanguage: "he-IL",
       url: absoluteUrl(PATH),
       mainEntityOfPage: absoluteUrl(PATH),
-      image: absoluteUrl("/instagram/vintage-welcome-mirror-gold-lettering.jpg"),
+      image: absoluteUrl("/signs/wedding-welcome-sign-line-illustrations.jpg"),
       datePublished: "2026-11-21",
       dateModified: "2026-11-21",
       author: { "@type": "Organization", name: site.name, url: site.url },
@@ -182,10 +182,10 @@ export default function EventWelcomeSignPage() {
             </div>
             <div className="ws-hero-art">
               <figure className="ws-photo">
-                <Image src="/instagram/vintage-welcome-mirror-gold-lettering.jpg" alt="שלט קבלת פנים על מראת וינטג' עם מסגרת שמנת מגולפת וכיתוב זהב: Tal & Itay, התאריך 02.11.2026 ו-Welcome to our wedding" width={1296} height={1536} priority sizes="(max-width:900px) 80vw, 38vw" />
+                <Image src="/signs/wedding-welcome-sign-line-illustrations.jpg" alt="שלט קבלת פנים לחתונה על כן עץ עם סרט לבן, בשחור לבן עם איורי קו של ברבורים, כדור דיסקו ועוגה: Welcome to the wedding of Zohar & Tali, 30th May 2026" width={1024} height={1536} priority sizes="(max-width:900px) 80vw, 38vw" />
               </figure>
               <figure className="ws-photo-mini" aria-hidden="true">
-                <Image src="/instagram/oval-welcome-mirror-garden-wedding.jpg" alt="" width={1136} height={1408} sizes="170px" />
+                <Image src="/signs/wedding-reception-sign-pink-orange.jpg" alt="" width={1086} height={1448} sizes="170px" />
               </figure>
               <span className="ws-note script">Welcome</span>
             </div>

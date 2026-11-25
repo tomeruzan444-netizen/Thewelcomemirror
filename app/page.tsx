@@ -3,7 +3,7 @@ import Image from "next/image";
 import Faq, { faqSchema } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
 import InstagramSection from "@/components/InstagramSection";
-import { CtaBand, Flourish, Models, QuizSection, Rental, ServiceList, Steps } from "@/components/Sections";
+import { CtaBand, DiyVsRental, Flourish, Models, QuizSection, Rental, ServiceList, Steps } from "@/components/Sections";
 import { homeFaqs, services } from "@/lib/services";
 import { site } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
@@ -59,6 +59,7 @@ export default function Home() {
       <Models />
       <InstagramSection path="/" />
       <Rental />
+      <DiyVsRental />
       <ServiceList />
       <QuizSection />
 

@@ -658,3 +658,29 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 .printed li:nth-child(4) figure { transform: translateY(1.2rem) rotate(1.6deg); }
 @media (max-width: 1000px) and (min-width: 721px) { .printed { grid-template-columns: repeat(2, 1fr); row-gap: 2.4rem; } }
 @media (max-width: 720px) { .printed { grid-template-columns: none; } .printed li figure { transform: none !important; } }
+
+/* להכין לבד מול השכרה (עמוד הבית) */
+.diy { width: 100%; max-width: 980px; margin: 0 auto; border-collapse: separate; border-spacing: 0; background: var(--white); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; font-size: 1.05rem; }
+.diy th, .diy td { padding: 1.05rem 1.3rem; text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); line-height: 1.55; }
+.diy tbody tr:last-child > * { border-bottom: 0; }
+.diy thead th { font-family: var(--f-title); font-size: 1.2rem; font-weight: 500; background: var(--cream-2); color: var(--ink); }
+.diy thead th:last-child { background: var(--blush); color: var(--rose-dark); }
+.diy thead td { background: var(--cream-2); }
+.diy tbody th { font-family: var(--f-title); font-weight: 500; color: var(--ink); white-space: nowrap; width: 9rem; }
+.diy tbody td:nth-of-type(1) { color: var(--muted); }
+.diy tbody td:nth-of-type(2) { background: #fdf6f6; color: var(--ink); }
+.diy-note { max-width: 760px; margin: 1.8rem auto 0; text-align: center; color: var(--muted); font-size: 1.1rem; }
+.diy-note a { color: var(--rose-dark); }
+@media (max-width: 680px) {
+  .diy, .diy tbody, .diy tr, .diy th, .diy td { display: block; width: auto; }
+  .diy { border: 0; background: none; border-radius: 0; overflow: visible; }
+  .diy thead { display: none; }
+  .diy tbody tr { background: var(--white); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; margin-bottom: .9rem; }
+  .diy tbody th { width: auto; padding-bottom: .4rem; border-bottom: 0; font-size: 1.15rem; }
+  .diy tbody td { padding-top: .7rem; padding-bottom: .8rem; }
+  .diy tbody td::before { content: attr(data-label); display: block; font-size: .85rem; font-weight: 700; letter-spacing: .02em; margin-bottom: .15rem; }
+  .diy tbody td:nth-of-type(1)::before { color: var(--muted); }
+  .diy tbody td:nth-of-type(2)::before { color: var(--rose); }
+  .diy tbody tr:last-child > * { border-bottom: 1px solid var(--line); }
+  .diy tbody tr > *:last-child { border-bottom: 0 !important; }
+}
